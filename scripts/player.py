@@ -1,4 +1,5 @@
 import pygame
+import os
 
 class Player:
     def __init__(self, x, y):
@@ -9,10 +10,16 @@ class Player:
         self.is_attacking = False #track attack state
         self.attack_timer = 0 #attack animation time
 
+        #Loads the Attacking Sound effect
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "assets", "audios"))
+        attack_sound_path = os.path.join(base_path, "sword_slash.mp3")
+        self.attack_sound = pygame.mixer.Sound(attack_sound_path)
+
     def attack(self, keys):
         if keys[pygame.K_j] and not self.is_attacking:  # Press 'J' to attack
             self.is_attacking = True
             self.attack_timer = 10  # Attack animation lasts 10 frames
+            self.attack_sound.play()
 
     def update(self):
         if self.is_attacking:
