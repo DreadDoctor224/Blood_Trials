@@ -1,0 +1,12 @@
+# Ignore Python cache & virtual environment
+__pycache__/
+.venv/
+
+# Ignore IDE settings
+.idea/
+
+# Ignore assets & large files
+assets/
+*.psd
+*.zip
+*.mp4
